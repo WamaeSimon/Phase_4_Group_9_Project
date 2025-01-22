@@ -43,6 +43,7 @@ def data_shape(df):
     
 #Check for the dataset information   
 def check_Info(df):
+    print("===============The dataset Shape=================")
     print(df.shape)
     print("===============The dataset columns=================")
     print(df.columns)
