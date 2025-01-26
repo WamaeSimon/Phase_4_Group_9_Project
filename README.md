@@ -1,4 +1,6 @@
-# Phase_4_Group_9_Project
+# Sentiment Analysis of Tweets on Apple and Google Products
+![twitter1](https://github.com/user-attachments/assets/324dbfcf-7b22-4b04-b44a-c76a16bfc0f8)
+
 ## Overview
 
 This project focuses on leveraging sentiment analysis, a natural language processing (NLP) technique, to classify tweets about Apple and Google products into positive, negative, or neutral categories. The goal is to provide actionable insights for businesses to improve customer experiences, refine marketing strategies, and enhance decision-making.
@@ -86,7 +88,7 @@ The dataset, sourced from CrowdFlower, contains 9,093 tweets with three main col
 - **Emotions_in_tweet_is_directed_at**: The product (e.g., Apple, Google) being discussed.
 - **Is_there_an_emotion_directed_at_a_brand_or_product**: The emotion (positive, negative, neutral) associated with the tweet.
 
-# Data Preparation
+## Data Preparation
 
 - **Handling Missing Values**: 
   - Rows with missing `tweet_text` were dropped.
@@ -102,9 +104,9 @@ The dataset, sourced from CrowdFlower, contains 9,093 tweets with three main col
 - **Feature Engineering**: 
   - Created new columns for cleaned text, mentions, and hashtags.
 
-# Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis (EDA)
 
-## Word Clouds
+### Word Clouds
 Visualized the most frequent **positive** and **negative** words for Apple and Google:
 
   
@@ -215,8 +217,73 @@ These metrics highlight the ineffectiveness of unsupervised learning for the dat
 
 ## Best Model
 - **Logistic Regression**: Achieved the highest accuracy and demonstrated robust generalization.
+ 
+  **logistic regression binary classification results**
+  
+![image](https://github.com/user-attachments/assets/d098ce45-863c-4923-982c-7902256a356d)
 
----
+#### Model Performance Summary
+
+- **Training vs. Test Performance**:
+  - Training score: **0.95**, indicating overfitting.
+  - Test score: **0.83**, reflecting reduced generalization.
+
+- **Classification Report**:
+  - **Class 1 (Positive Class)**:
+    - Precision: **0.92**
+    - Recall: **0.87**
+    - F1 Score: **0.89** (Strong performance)
+  - **Class 0 (Negative Class)**:
+    - Precision: **0.47**
+    - Recall: **0.62**
+    - F1 Score: Relatively weaker performance, indicating difficulty in identifying negative instances.
+
+- **Performance summary**:
+  - The model performs well on positive cases but struggles with the negative class.
+  - Overfitting suggests the need for further tuning and regularization to enhance generalization and improve performance on the negative class.
+
+   #### logistic regression multiclass classification results
+
+   CLASSIFICATION REPORT
+------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.32      0.50      0.39       154
+
+           1       0.70      0.67      0.68       954
+           2       0.63      0.59      0.61       716
+
+    accuracy                           0.62      1824
+   macro avg       0.55      0.59      0.56      1824
+weighted avg       0.64      0.62      0.63      1824
+
+![image](https://github.com/user-attachments/assets/881fa910-0556-45ee-ac9a-6d0a26c34baa)
+
+##### Baseline Model Performance
+
+- **Training vs. Test Scores**:
+  - Training Score: **0.89**
+  - Test Score: **0.64**, indicating strong performance on training data but poor generalization to unseen data.
+
+- **Class-wise Performance**:
+  - **Class 0 (Negative Sentiment)**:
+    - Precision: **0.35**
+    - Recall: **0.42**
+    - Struggles with identifying negative tweets accurately.
+  - **Class 1 (Neutral Sentiment)**:
+    - Precision: **0.70**
+    - Recall: **0.69**
+    - Decent performance, though there is room for improvement.
+  - **Class 2 (Positive Sentiment)**:
+    - Precision: **0.64**
+    - Recall: **0.62**
+    - Moderate performance, but not ideal.
+
+- **Overall Accuracy**:
+  - **0.64**, reflecting limited effectiveness in distinguishing between sentiment classes.
+
+### performance summary
+The baseline model performs well on the training set but struggles with generalization. It shows moderate classification abilities, particularly for neutral and positive sentiments, but has significant weaknesses in identifying negative sentiments. Improvements in precision and recall across all classes are necessary for better performance.
 
 ## Key Insights
 ### Apple
